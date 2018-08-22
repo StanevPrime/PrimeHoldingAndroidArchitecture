@@ -10,12 +10,12 @@
 3. Repository retrieves data from any data source
 3a. Local DB
 3b. Web Service
-3c. Cache etc
+3c. Cache etc.
 4. The Repository delivers data via Observables to the ViewModel
 5. Activity/Fragment observes ViewModel's outputs via data binding
 
 ## Activity/Fragment
-An Activity or Fragment, with their layout, represents the **view layer**. The view role in this pattern is to 
+An Activity or Fragment, with their layout, represents the **view layer**. The view role in this pattern is to
 *  Defining the structure, layout, and appearance of what the user sees on screen
 * Observe (or subscribe to) a **ViewModel** outputs (observables) to get data in order to update UI elements accordingly
 * Delegate user actions to a **ViewModel** via ViewModel's inputs (methods)
@@ -28,7 +28,7 @@ Following rules have to be considered when a ViewModel is being implemented:
 * It should never reference a view
 * It should encapsulate a specific logic.
 * If some screen is complex in terms of UI Elements/Panels it should be implemented as much ViewModels as needed as they have to be wrapped in a single ViewModel via composition/DI. Then that single view model should be instantiated in the Activity/Fragment with Dependency Injection (for example Dagger)
-* The view model should not cointain state in the best case scenario, even though Statefull ViewModels are acceprable in case the models/collection should be localy manipulated 
+* The view model should not cointain state in the best case scenario, even though Stateful ViewModels are acceptable in case the models/collection should be locally manipulated
 *Example: sorting/filtering/adding/removing items from a collection etc.*
 * It's unit testable
 * All outputs have to be initialized inside init body
@@ -49,11 +49,19 @@ ViewModelInputOutput composes **Input** and **Output**.
 Activity/Fragment knows only for ViewModelInputOutput and the ViewModel itself is hidden from it, so the only way of accessing Inputs/Outputs is the following:
  * vieModel.input.*
  * viewModel.output.*
- 
+
 The above setup improves readability and allows implementing **bindings** for output streams
 ## Bindings
-In order to glue View (Activity/Fragment) with a ViewModels a ViewModelOutput extensions function should be implemented 
+In order to glue View (Activity/Fragment) with a ViewModels a ViewModelOutput extensions function should be implemented
+
+### View Data Bindings
+Data Binding should be used wherever possible to further abstract the XML from the Activity/Fragment. This aids in protecting against memory leaks and null pointer exceptions. The Activity/Fragment should avoid referencing views by their ID, but rather set binding variables in their XML bindings. By doing so, the whole XML can be changed without the Activity/Fragment knowing it and no further changes have to be made -- the XML manages how to consume the provided variables.
+
+[Binding Adapters](https://developer.android.com/reference/android/databinding/BindingAdapter) and [Binding Conversions](https://developer.android.com/reference/android/databinding/BindingConversion) can be used with binding variables to reduce the complexity of the code in the XML file itself when the XML has to do complex operations or use a 3rd party library.
+
+[Read More](../blob/Documentation/DataBinding.md)
+
 
 ## Repository
 The repository pattern is a design pattern that isolates data access behind interface abstractions. Connecting to the database, Cache, Web Service and manipulating data storage objects is performed through methods provided by the interface's implementation.
-Each Repository contains methods that returns Observables.The idea behind is that when the ViewModel asks for some data the Repository will retrieve from any data source and will provide it in timely manner but not immediately, therefore all repository's methods should retutn **Observable** 
+Each Repository contains methods that returns Observables. The idea behind is that when the ViewModel asks for some data the Repository will retrieve from any data source and will provide it in timely manner but not immediately, therefore all repository's methods should return **Observable**
