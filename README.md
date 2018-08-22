@@ -20,7 +20,7 @@ An Activity or Fragment, with their layout, represents the **view layer**. The v
 * Observe (or subscribe to) a **ViewModel** outputs (observables) to get data in order to update UI elements accordingly
 * Delegate user actions to a **ViewModel** via ViewModel's inputs (methods)
 
-![Alt text](https://gitlab.programista.pro/codebase/mobile-Android/templates/raw/master/RxActivity/images/result_1.png "Activity")
+![Alt text](images/Activity.png "Activity")
 
 ## ViewModel
 The view model is an abstraction of the view exposing **outputs** (observables) and **inputs** (methods). Each ViewModel should encapsulate the business logic in a way that it could be reused across the entire app.ViewModelInputOutput
@@ -34,7 +34,7 @@ Following rules have to be considered when a ViewModel is being implemented:
 * All outputs have to be initialized inside init body
 * For better readability **custom operators** have to be implemented to serve specific Observable needs
 
-![Alt text](https://gitlab.programista.pro/codebase/mobile-Android/templates/raw/master/RxActivity/images/result_2.png "ViewModel")
+![Alt text](images/ViewModel.png "ViewModel")
 
 ### Inputs
 *  ViewModelInput is an interface that groups all inputs (methods) that the ViewModel should implement
@@ -59,9 +59,11 @@ Data Binding should be used wherever possible to further abstract the XML from t
 
 [Binding Adapters](https://developer.android.com/reference/android/databinding/BindingAdapter) and [Binding Conversions](https://developer.android.com/reference/android/databinding/BindingConversion) can be used with binding variables to reduce the complexity of the code in the XML file itself when the XML has to do complex operations or use a 3rd party library.
 
-[Read More](../blob/Documentation/DataBinding.md)
+[Read More](Documentation/DataBinding.md)
 
 
 ## Repository
 The repository pattern is a design pattern that isolates data access behind interface abstractions. Connecting to the database, Cache, Web Service and manipulating data storage objects is performed through methods provided by the interface's implementation.
 Each Repository contains methods that returns Observables. The idea behind is that when the ViewModel asks for some data the Repository will retrieve from any data source and will provide it in timely manner but not immediately, therefore all repository's methods should return **Observable**
+
+![Alt text](images/Repository.png "Repository")
