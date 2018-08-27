@@ -27,7 +27,7 @@ The view model is an abstraction of the view exposing **outputs** (observables) 
 Following rules have to be considered when a ViewModel is being implemented:
 * It should never reference a view
 * It should encapsulate a specific logic.
-* If some screen is complex in terms of UI Elements/Panels it should be implemented as much ViewModels as needed as they have to be wrapped in a single ViewModel via composition/DI. Then that single view model should be instantiated in the Activity/Fragment with Dependency Injection (for example Dagger)
+* If some screen is complex in terms of UI Elements/Panels it should be implemented as much ViewModels as needed as they have to be wrapped in a single ViewModel via composition/DI (see below). Then that single view model should be instantiated in the Activity/Fragment with Dependency Injection (for example Dagger)
 * The view model should not cointain state in the best case scenario, even though Stateful ViewModels are acceptable in case the models/collection should be locally manipulated
 *Example: sorting/filtering/adding/removing items from a collection etc.*
 * It's unit testable
@@ -61,6 +61,9 @@ Data Binding should be used wherever possible to further abstract the XML from t
 
 [Read More](Documentation/DataBinding.md)
 
+## ViewModel Composition
+
+Multiple ViewModels can be composed. For more information, refer to [ViewModel Composition](./Documentation/ViewModelComposition.md).
 
 ## Repository
 The repository pattern is a design pattern that isolates data access behind interface abstractions. Connecting to the database, Cache, Web Service and manipulating data storage objects is performed through methods provided by the interface's implementation.
