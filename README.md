@@ -55,15 +55,15 @@ The above setup improves readability and allows implementing **bindings** for ou
 In order to glue View (Activity/Fragment) with a ViewModels a ViewModelOutput extensions function should be implemented
 
 ### View Data Bindings
-Data Binding should be used wherever possible to further abstract the XML from the Activity/Fragment. This aids in protecting against memory leaks and null pointer exceptions. The Activity/Fragment should avoid referencing views by their ID, but rather set binding variables in their XML bindings. By doing so, the whole XML can be changed without the Activity/Fragment knowing it and no further changes have to be made -- the XML manages how to consume the provided variables.
+Where possible, the View Model's Input/Output should be directly connected to the View Binding via extension function. [ RxBinding](https://github.com/JakeWharton/RxBinding) is an extremely helpful tool for that purpose.
 
-[Binding Adapters](https://developer.android.com/reference/android/databinding/BindingAdapter) and [Binding Conversions](https://developer.android.com/reference/android/databinding/BindingConversion) can be used with binding variables to reduce the complexity of the code in the XML file itself when the XML has to do complex operations or use a 3rd party library.
+[Read More](Documentation/RxBindings.md)
 
-[Read More](Documentation/DataBinding.md)
 
 ## ViewModel Composition
 
-Multiple ViewModels can be composed. For more information, refer to [ViewModel Composition](./Documentation/ViewModelComposition.md).
+If a screen has a variety of functionalities, or one complex functionality, it should be split up into separate View Models that can be easily **reused**.
+For more information, refer to [ViewModel Composition](./Documentation/ViewModelComposition.md).
 
 ## Repository
 The repository pattern is a design pattern that isolates data access behind interface abstractions. Connecting to the database, Cache, Web Service and manipulating data storage objects is performed through methods provided by the interface's implementation.

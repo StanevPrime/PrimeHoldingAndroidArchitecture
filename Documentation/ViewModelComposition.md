@@ -12,3 +12,5 @@ You will notice that the composed ViewModel's (GtcConnectionViewModel) onCleared
 
 ![Alt text](../images/ComposingViewModels3.png "Public modifier for onCleared()")
 
+The composed ViewModel exposes _input_ and _output_ of each of the contained View Model. The View consumes them by directly binding its View Binding to their Inputs/Outputs using RxBindings.
+[Read More about using RxBindings](Documentation/DataBinding.md)
