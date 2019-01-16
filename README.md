@@ -2,7 +2,7 @@
 > The Model-View-ViewModel (MVVM) pattern helps to cleanly separate the business and presentation logic of an application from its user interface (UI). Maintaining a clean separation between application logic and the UI helps to address numerous development issues and can make an application easier to test, maintain, and evolve. It can also greatly improve code re-use opportunities and allows developers and UI designers to more easily collaborate when developing their respective parts of an app
 
 
-![Alt text](https://gitlab.programista.pro/codebase/mobile-Android/architecture/raw/develop/images/MVVMArchitecture.png?raw=true "Step 1")
+![Alt text](images/MVVMArchitecture.png "Step 1")
 
 ## Diagram flow
 1. Activity/Fragment pushes events to the ViewModel's inputs
